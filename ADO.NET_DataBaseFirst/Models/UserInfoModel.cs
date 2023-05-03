@@ -80,6 +80,21 @@ namespace ADO.NET_DataBaseFirst.Models
         public void ChangeUserBirthDayWithSave(int id, DateTime newDt)
         {
             _userInfo.FirstOrDefault(u => u.Id == id).birthDate = newDt;
+            SaveChanges();
+        }
+
+        public void ShowDataWithChanges()
+        {
+            foreach (usersInfo oneUserInfo in _userInfo)
+            {
+                Console.WriteLine(
+                    $"\n\tId: {oneUserInfo.Id}; " +
+                    $"\n\tFio: {oneUserInfo.fio}; " +
+                    $"\n\tBirthDate: {oneUserInfo.birthDate.ToShortDateString()};" +
+                    $"\n\tInn: {oneUserInfo.inn};" +
+                    $"\n\tGender: {oneUserInfo.gender};" +
+                    $"\n\tUserId: {oneUserInfo.userId}.");
+            }
         }
     }
 }

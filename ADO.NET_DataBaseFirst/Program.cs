@@ -19,7 +19,7 @@ namespace ADO.NET_DataBaseFirst
 
             //Изменения без сохранения в БД
             userInfoModel.ChangeUserFio(1, $"Admin{DateTime.Now.Minute} Adminovich{DateTime.Now.Second}");
-            
+
             //Cохранение изменений в базе данных
             userInfoModel.SaveChanges();
 
@@ -27,6 +27,7 @@ namespace ADO.NET_DataBaseFirst
             userInfoModel.ChangeUserFioWithSave(2, $"User Uzirov{DateTime.Now.Date.ToShortDateString()}");
 
             //Изменение даты рождения с сохранением
+            userInfoModel.ChangeUserBirthDayWithSave(4, DateTime.Now.AddYears(50));
 
             Console.WriteLine("Информация в базе данных сохранена");
             Console.ReadKey();
