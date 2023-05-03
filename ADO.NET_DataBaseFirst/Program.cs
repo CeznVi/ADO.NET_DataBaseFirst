@@ -15,12 +15,32 @@ namespace ADO.NET_DataBaseFirst
             
             UserInfoModel userInfoModel = new UserInfoModel(testedEntities);
 
-
             userInfoModel.ShowAllData();
 
+            //Изменения без сохранения в БД
+            userInfoModel.ChangeUserFio(1, $"Admin{DateTime.Now.Minute} Adminovich{DateTime.Now.Second}");
+            
+            //Cохранение изменений в базе данных
+            userInfoModel.SaveChanges();
 
+            //Изменение ФИО с сохранением
+            userInfoModel.ChangeUserFioWithSave(2, $"User Uzirov{DateTime.Now.Date.ToShortDateString()}");
+
+            //Изменение даты рождения с сохранением
+
+            Console.WriteLine("Информация в базе данных сохранена");
+            Console.ReadKey();
+            Console.Clear();
+
+            ///Проверка изменений в базе данных
+            testedEntities = null; 
+            testedEntities = new testedEntities();
+            userInfoModel = null;
+            userInfoModel = new UserInfoModel(testedEntities);
+            userInfoModel.ShowAllData();
 
         }
+
 
 
 
